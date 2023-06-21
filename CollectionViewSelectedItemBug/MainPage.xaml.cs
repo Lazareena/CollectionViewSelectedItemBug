@@ -1,24 +1,23 @@
-﻿namespace CollectionViewSelectedItemBug;
+﻿using CollectionViewSelectedItemBug.Models;
+
+namespace CollectionViewSelectedItemBug;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
+		cV.ItemsSource = new List<ListItem>
+		{
+			new ListItem { DisplayText = "Item1"},
+            new ListItem { DisplayText = "Item2"},
+            new ListItem { DisplayText = "Item3"}
+        };
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private void cV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+		;
+    }
 }
 
